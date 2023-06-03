@@ -13,6 +13,6 @@ def test_item(item):
     assert item.quantity == 2
     assert item.calculate_total_price() == 2000
     item.apply_discount()
-    assert item.price == 1000 * 0.85
+    assert item.price == 1000 * Item.pay_rate
     item.apply_discount()
-    assert item.price == 1000 * 0.85 * 0.85
+    assert item.price == 1000 * Item.pay_rate * Item.pay_rate
