@@ -16,3 +16,15 @@ def test_item(item):
     assert item.price == 1000 * Item.pay_rate
     item.apply_discount()
     assert item.price == 1000 * Item.pay_rate * Item.pay_rate
+
+
+def test_item_two(item):
+    item.name = "Билли"
+    assert item.name == "Билли"
+    item.name = "Билли Боб Джонсон" #len > 10
+    assert item.name == "Билли"
+    item.name = ""
+    assert item.name == ""
+    assert Item.string_to_number('0') == 0
+    assert Item.string_to_number('3.99') == 3
+    assert Item.string_to_number('') == 0
