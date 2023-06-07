@@ -29,8 +29,8 @@ class Item:
         return self.__name
 
     @name.setter
-    """Метод-сеттер для установки атрибута name"""
     def name(self, name: str):
+        """Метод-сеттер для установки атрибута name"""
         if len(name) <= 10:
             self.__name=name
         else:
