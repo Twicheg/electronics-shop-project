@@ -37,7 +37,7 @@ class Item:
             raise Exception("Длина наименования товара превышает 10 символов.")
 
     @classmethod
-    def instantiate_from_csv(cls , PATH='../src/items.csv'):
+    def instantiate_from_csv(cls , PATH='src/items.csv'):
         "метод создания объектов из данных файла"
         cls.all = []  # там был экзепляр от "Телефон" в мейне (через Инит записался)
         for dict_ in DictReader(open(PATH, encoding='cp1251')):
