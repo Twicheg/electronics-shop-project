@@ -56,4 +56,5 @@ class Item:
         return f"{self.__class__.__name__}('{self.name.title()}', {self.price}, {self.quantity})"
 
     def __str__(self):
+        '''Метод отображения для пользователя'''
         return f'{self.name.title()}'
