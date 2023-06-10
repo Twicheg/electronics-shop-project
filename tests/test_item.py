@@ -29,13 +29,14 @@ def test_item_two(item):
     assert Item.string_to_number('3.99') == 3
     assert Item.string_to_number('') == 0
 
+
 def test_instantiate_from_csv(item):
     assert Item.instantiate_from_csv() == 5
 
+
 def test_repr():
-    item2=Item('ноутбук',5000 ,3)
-    assert repr(item2) == "Item('Ноутбук', 5000, 3)"
+    assert repr(Item('ноутбук', 5000, 3)) == "Item('Ноутбук', 5000, 3)"
+
 
 def test_str():
-    item2=Item('термопаста',5000 ,3)
-    assert str(item2) == "Термопаста"
+    assert str(Item('термопаста', 5000, 3)) == "Термопаста"
