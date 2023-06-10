@@ -32,18 +32,17 @@ class Item:
     def name(self, name: str):
         """Метод-сеттер для установки атрибута name"""
         if len(name) <= 10:
-            self.__name=name
+            self.__name = name
         else:
             raise Exception("Длина наименования товара превышает 10 символов.")
 
     @classmethod
-    def instantiate_from_csv(cls , PATH='src/items.csv'):
+    def instantiate_from_csv(cls, PATH='src/items.csv'):
         "метод создания объектов из данных файла"
         cls.all = []  # там был экзепляр от "Телефон" в мейне (через Инит записался)
         for dict_ in DictReader(open(PATH, encoding='cp1251')):
             cls(dict_['name'], float(dict_['price']), int(dict_['quantity']))
-        return 'Экземпляры из файла добавлены'
-
+        return len(cls.all)
 
     @staticmethod
     def string_to_number(string: str) -> int:
@@ -51,3 +50,10 @@ class Item:
         if not string:
             return 0
         return int(float(string))
+
+    def __repr__(self):
+        '''Метод отображения инфаормации в режиме отладки'''
+        return f"{self.__class__.__name__}('{self.name.title()}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return f'{self.name.title()}'
