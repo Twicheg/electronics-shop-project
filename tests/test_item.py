@@ -7,6 +7,7 @@ from src.phone import Phone
 def item():
     return Item("Смартфон", 1000, 2)
 
+
 def test_item(item):
     assert item.name == "Смартфон"
     assert item.price == 1000

@@ -40,6 +40,7 @@ def test_name(phone):
     except Exception as e:
         assert str(e) == "Длина наименования товара превышает 10 символов."
 
+
 def test_setter(phone):
     try:
         phone.number_of_sim = -10

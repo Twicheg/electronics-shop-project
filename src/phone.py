@@ -3,6 +3,7 @@ from src.item import Item
 
 class Phone(Item):
     """ Класс Phone , наследуемый от Item"""
+
     def __init__(self, name: str, price: float, quantity: int, number_of_sim: int) -> None:
         self.__name = name
         self.price = price
@@ -23,5 +24,5 @@ class Phone(Item):
 
     def __repr__(self):
         """Метод отображения инфаормации в режиме отладки """
-        #str в Item
+        # str в Item
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.__number_of_sim})"
