@@ -38,7 +38,7 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls, PATH='src/items.csv'):
-        "метод создания объектов из данных файла"
+        """метод создания объектов из данных файла"""
         cls.all = []  # там был экзепляр от "Телефон" в мейне (через Инит записался)
         for dict_ in DictReader(open(PATH, encoding='cp1251')):
             cls(dict_['name'], float(dict_['price']), int(dict_['quantity']))
@@ -46,15 +46,21 @@ class Item:
 
     @staticmethod
     def string_to_number(string: str) -> int:
-        "метод создания числового объекта из переданной строки"
+        """метод создания числового объекта из переданной строки"""
         if not string:
             return 0
         return int(float(string))
 
+    def __add__(self, other):
+        return self.quantity+other.quantity
+
+    # def __radd__(self, other):
+    #     return other.quantity + self.quantity
+
     def __repr__(self):
-        '''Метод отображения инфаормации в режиме отладки'''
-        return f"{self.__class__.__name__}('{self.name.title()}', {self.price}, {self.quantity})"
+        """Метод отображения инфаормации в режиме отладки"""
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
 
     def __str__(self):
-        '''Метод отображения для пользователя'''
-        return f'{self.name.title()}'
+        """Метод отображения для пользователя"""
+        return f'{self.name}'

@@ -1,11 +1,11 @@
 import pytest
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
 def item():
     return Item("Смартфон", 1000, 2)
-
 
 def test_item(item):
     assert item.name == "Смартфон"
@@ -35,8 +35,8 @@ def test_instantiate_from_csv(item):
 
 
 def test_repr():
-    assert repr(Item('ноутбук', 5000, 3)) == "Item('Ноутбук', 5000, 3)"
+    assert repr(Item('Ноутбук', 5000, 3)) == "Item('Ноутбук', 5000, 3)"
 
 
 def test_str():
-    assert str(Item('термопаста', 5000, 3)) == "Термопаста"
+    assert str(Item('Термопаста', 5000, 3)) == "Термопаста"
