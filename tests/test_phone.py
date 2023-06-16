@@ -37,14 +37,13 @@ def test_add(phone, item):
 def test_name(phone):
     try:
         phone.name = 'что-то больше 10 символов'
-    except Exception:
-        return True
-
+    except Exception as e:
+        assert str(e) == "Длина наименования товара превышает 10 символов."
 
 def test_setter(phone):
     try:
         phone.number_of_sim = -10
-    except ValueError:
-        return True
+    except ValueError as e:
+        assert str(e) == 'Количество физических SIM-карт должно быть целым числом больше нуля.'
     phone.number_of_sim = 5
     assert phone.number_of_sim == 5
