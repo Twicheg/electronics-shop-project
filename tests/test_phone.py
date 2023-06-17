@@ -32,6 +32,7 @@ def test_repr(phone):
 def test_add(phone, item):
     assert item + phone == 5
     assert phone + phone == 6
+    assert phone + 1 == 4
 
 
 def test_name(phone):

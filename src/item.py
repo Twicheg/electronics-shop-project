@@ -52,7 +52,10 @@ class Item:
         return int(float(string))
 
     def __add__(self, other):
-        return self.quantity + other.quantity
+        if isinstance(other, self.__class__):
+            return self.quantity + other.quantity
+        else:
+            return self.quantity + other
 
     # def __radd__(self, other):
     #     return other.quantity + self.quantity
