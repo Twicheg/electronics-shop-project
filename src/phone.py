@@ -5,11 +5,8 @@ class Phone(Item):
     """ Класс Phone , наследуемый от Item"""
 
     def __init__(self, name: str, price: float, quantity: int, number_of_sim: int) -> None:
-        self.__name = name
-        self.price = price
-        self.quantity = quantity
         self.__number_of_sim = number_of_sim
-        Item.__init__(self, self.__name, self.price, self.quantity)
+        super().__init__(name, price, quantity)
 
     @property
     def number_of_sim(self):
