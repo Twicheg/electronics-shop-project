@@ -11,7 +11,7 @@ class Mixin:
             return self
 
 
-class KeyBoard(Mixin, Item):
+class KeyBoard(Mixin, Item): #в main был вызов Keyboard()
     def __init__(self, name: str, price: float, quantity: int) -> None:
         super().__init__(name, price, quantity)
         self._language = 'EN'
