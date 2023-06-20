@@ -57,6 +57,9 @@ class Item:
         else:
             return self.quantity + other
 
+    def __radd__(self, other):
+        return other + self.quantity
+
     def __repr__(self):
         """Метод отображения инфаормации в режиме отладки"""
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
