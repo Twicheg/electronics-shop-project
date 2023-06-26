@@ -1,6 +1,10 @@
 from csv import DictReader
 
 
+class InstantiateCSVError(Exception):
+    def __init__(self, *args, **kwargs):
+        self.message = args if args else 'Файл items.csv поврежден'
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -36,12 +40,23 @@ class Item:
         else:
             raise Exception("Длина наименования товара превышает 10 символов.")
 
+        def __init__(self, *args, **kwargs):
+            self.message = 'Файл items.csv поврежден'
+
     @classmethod
-    def instantiate_from_csv(cls, PATH='src/items.csv'):
+    def instantiate_from_csv(cls, PATH='items.csv'):
         """метод создания объектов из данных файла"""
         cls.all = []  # там был экзепляр от "Телефон" в мейне (через Инит записался)
-        for dict_ in DictReader(open(PATH, encoding='cp1251')):
-            cls(dict_['name'], float(dict_['price']), int(dict_['quantity']))
+        try:
+            open(PATH)
+        except FileNotFoundError:
+            raise FileNotFoundError('Отсутствует файл items.csv')
+        else:
+            for dict_ in DictReader(open(PATH, encoding='cp1251')):
+                if not dict_['name'] or not dict_['price'] or not dict_['quantity']:
+                    raise InstantiateCSVError('Файл items.csv поврежден')
+                else:
+                    cls(dict_['name'], float(dict_['price']), int(dict_['quantity']))
         return len(cls.all)
 
     @staticmethod

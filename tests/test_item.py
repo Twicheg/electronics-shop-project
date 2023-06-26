@@ -33,7 +33,10 @@ def test_item_two(item):
 
 def test_instantiate_from_csv(item):
     assert Item.instantiate_from_csv() == 5
-
+    try:
+        Item.instantiate_from_csv('neitems.csv')
+    except FileNotFoundError as e:
+        assert str(e) == 'Отсутствует файл items.csv'
 
 def test_repr():
     assert repr(Item('Ноутбук', 5000, 3)) == "Item('Ноутбук', 5000, 3)"
@@ -41,3 +44,5 @@ def test_repr():
 
 def test_str():
     assert str(Item('Термопаста', 5000, 3)) == "Термопаста"
+
+
